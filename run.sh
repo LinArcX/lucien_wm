@@ -11,4 +11,3 @@ xinit .xinitrc -- \
         -ac \
         -screen 800x600 \
         -host-cursor
-#Footer

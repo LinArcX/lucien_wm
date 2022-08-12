@@ -185,7 +185,7 @@ function project.build()
 end
 
 function project.run()
-  vim.cmd(string.format(":call HTerminal(0.4, 200, \"./run.sh\")", items[1], items[2], app_name))
+  vim.cmd("call jobstart(\"./run.sh\")")
 end
 
 function project.clean()
@@ -217,6 +217,7 @@ table.insert(require('command_palette').CpMenu,
     { "cmake doc", ":lua require('project').show_cmake_doc()" },
     { "function doc", ":lua require('project').show_function_doc()" },
     { "function doc <cword>", ":lua require('project').show_function_doc_cword()" },
+    { "open log file", ":e logs.log" },
     { 'set arch type', ":lua require('project').select_type('Architecture', { 'x86', 'x64' }, 1)" },
     { 'set build type', ":lua require('project').select_type('BuildType', { 'debug', 'release' }, 2)" },
     { 'switch header/source (A-o)', ":ClangdSwitchSourceHeader" },

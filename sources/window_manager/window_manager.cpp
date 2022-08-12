@@ -1,9 +1,5 @@
 #include "window_manager.hpp"
 
-//extern "C" {
-//#include <X11/Xutil.h>
-//}
-
 #include <cstring>
 #include <algorithm>
 
@@ -21,9 +17,11 @@ mutex WindowManager::wm_detected_mutex_;
 unique_ptr<WindowManager> WindowManager::Create()
 {
   // 1. Open X display.
-  //const char* display_c_str = display_str.empty() ? nullptr : display_str.c_str();
   Display* display = XOpenDisplay(nullptr);
-  if (nullptr == display) {
+  if (nullptr == display)
+  {
+    LOG_F(ERROR, "Failed to initialize window manager.");
+
     //LOG(ERROR) << "Failed to open X display " << XDisplayName(nullptr);
     return nullptr;
   }
